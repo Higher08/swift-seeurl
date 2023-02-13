@@ -70,11 +70,11 @@ public struct HTTPClient {
             try curl.set(option: CURLOPT_PROXY, proxy)
         }
         if let proxyUsername = option.proxyUsermame {
-            try curl.set(option: CURLOPT_PROXYUSERNAME, proxyUsermame)
+            try curl.set(option: CURLOPT_PROXYUSERNAME, proxyUsername)
         }
         
         if let proxyPassword = option.proxyPassword {
-            try curl.set(option: CURLOPT_PROXYPASSWORD, proxyUsermame)
+            try curl.set(option: CURLOPT_PROXYPASSWORD, proxyPassword)
         }
         
         try curl.set(option: CURLOPT_USERAGENT, "curl/0.0.0")
