@@ -19,7 +19,7 @@ public struct HTTPClient {
         public var followRedirect: Bool /// CURLOPT_FOLLOWLOCATION
         public var acceptEncoding: String? /// CURLOPT_ACCEPT_ENCODING
         public var proxy: String? /// CURLOPT_PROXY
-        public var proxyUsermame: String? /// CURLOPT_PROXYUSERNAME
+        public var proxyUsername: String? /// CURLOPT_PROXYUSERNAME
         public var proxyPassword: String? /// CURLOPT_PROXYPASSWORD
         
         public init() {
@@ -27,7 +27,7 @@ public struct HTTPClient {
             self.verbose = false
             self.followRedirect = true
             self.proxy = nil
-            self.proxyUsermame = nil
+            self.proxyUsername = nil
             self.proxyPassword = nil
             self.acceptEncoding = ""
         }
@@ -37,7 +37,7 @@ public struct HTTPClient {
             self.followRedirect = followRedirect
             self.acceptEncoding = acceptEncoding
             self.proxy = proxy
-            self.proxyUsermame = proxyUsername
+            self.proxyUsername = proxyUsername
             self.proxyPassword = proxyPassword
         }
     }
@@ -69,7 +69,7 @@ public struct HTTPClient {
         if let proxy = option.proxy {
             try curl.set(option: CURLOPT_PROXY, proxy)
         }
-        if let proxyUsername = option.proxyUsermame {
+        if let proxyUsername = option.proxyUsername {
             try curl.set(option: CURLOPT_PROXYUSERNAME, proxyUsername)
         }
         
