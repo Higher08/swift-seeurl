@@ -37,7 +37,7 @@ public struct HTTPClient {
             self.followRedirect = followRedirect
             self.acceptEncoding = acceptEncoding
             self.proxy = proxy
-            self.proxyUsermame = proxyUsermame
+            self.proxyUsermame = proxyUsername
             self.proxyPassword = proxyPassword
         }
     }
