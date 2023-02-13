@@ -19,19 +19,26 @@ public struct HTTPClient {
         public var followRedirect: Bool /// CURLOPT_FOLLOWLOCATION
         public var acceptEncoding: String? /// CURLOPT_ACCEPT_ENCODING
         public var proxy: String? /// CURLOPT_PROXY
+        public var proxyUsermame: String? /// CURLOPT_PROXYUSERNAME
+        public var proxyPassword: String? /// CURLOPT_PROXYPASSWORD
+        
         public init() {
             self.timeoutInterval = 30
             self.verbose = false
             self.followRedirect = true
             self.proxy = nil
+            self.proxyUsermame = nil
+            self.proxyPassword = nil
             self.acceptEncoding = ""
         }
-        public init(timeoutInterval: Int, varbose: Bool, followRedirect: Bool, acceptEncoding: String?, proxy: String?) {
+        public init(timeoutInterval: Int, varbose: Bool, followRedirect: Bool, acceptEncoding: String?, proxy: String?, proxyUsername: String?, proxyPassword: String?) {
             self.timeoutInterval = timeoutInterval
             self.verbose = varbose
             self.followRedirect = followRedirect
             self.acceptEncoding = acceptEncoding
             self.proxy = proxy
+            self.proxyUsermame = proxyUsermame
+            self.proxyPassword = proxyPassword
         }
     }
     
@@ -61,6 +68,13 @@ public struct HTTPClient {
         
         if let proxy = option.proxy {
             try curl.set(option: CURLOPT_PROXY, proxy)
+        }
+        if let proxyUsername = option.proxyUsermame {
+            try curl.set(option: CURLOPT_PROXYUSERNAME, proxyUsermame)
+        }
+        
+        if let proxyPassword = option.proxyPassword {
+            try curl.set(option: CURLOPT_PROXYPASSWORD, proxyUsermame)
         }
         
         try curl.set(option: CURLOPT_USERAGENT, "curl/0.0.0")
